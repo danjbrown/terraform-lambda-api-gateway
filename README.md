@@ -4,7 +4,7 @@ Clone the repository.
 
 Run the following Terraform commands:
 ```
-terrform init
+terraform init
 terraform plan
 terraform apply
 ```
@@ -16,5 +16,5 @@ https://j9niey8xh4.execute-api.us-east-1.amazonaws.com/nodejs_app/index
 
 Destroy all resources:
 ```
-terrform destroy
+terraform destroy
 ```
