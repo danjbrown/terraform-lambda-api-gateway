@@ -14,6 +14,8 @@ Authenticate to AWS:
 aws configure
 ```
 
+Terraform is used to create the S3 bucket, Lambda function, API gateway, and CloudWatch logs. A ZIP of the Node.js application code is created and uploaded to the S3 bucket, from where it is synchronised with the Lambda function.
+
 Run the following Terraform commands:
 ```
 terraform init
