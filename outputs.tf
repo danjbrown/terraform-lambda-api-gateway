@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 output "lambda_bucket_name" {
   description = "Created S3 bucket with the following name:"
 
