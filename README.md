@@ -1,6 +1,6 @@
 # A Node.js application deployed using Terraform, S3, Lambda, and API Gateway
 
-## Set-up
+## Set-up and deployment
 
 Clone the repository.
 
