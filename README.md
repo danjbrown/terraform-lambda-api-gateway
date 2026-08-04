@@ -1,4 +1,9 @@
-# A Node.js application deployed using Terraform, S3, Lambda, and API Gateway
+# Node.js application deployed using Terraform, S3, Lambda, and API Gateway
+
+Deploys a very basic Node.js application using Terraform, S3, Lambda, and API Gateway.
+
+For more complex applications, for example using Express, it is likely more suitable to create a Docker image, upload it to
+ECR, and deploy a container using Lambda.
 
 ## Set-up and deployment
 
