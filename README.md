@@ -35,7 +35,7 @@ terraform apply
 
 ## Manual set-up and deployment
 
-The set-up could be done manually, excluding the S3 storage by uploading the appliation ZIP directly to the Lambda function.
+The set-up could be done manually, excluding the S3 storage by uploading the application ZIP directly to the Lambda function.
 
 ZIP the code:
 ```
