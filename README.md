@@ -46,24 +46,22 @@ Create a Lambda function:
 
 1. Go to AWS Lambda console.
 
-2. Click “Create function”, then choose:
+2. Create the Lambda function:
 
-    Runtime: Node.js 22.x
+    - Manually via the AWS Lambda console:
+        - Runtime: Node.js 22.x
+        - Handler: index.handler.
+        - Execution Role: Create a role or select one with basic Lambda permissions.
+        - Upload nodejs-app.zip in the console.
 
-    Handler: index.handler.
+    - Using the AWS CLI:
 
-    Execution Role: Create a role or select one with basic Lambda permissions.
-
-3. Upload the Code:
-
-    Upload nodej-app.zip in the console or via the AWS CLI:
-
-    aws lambda create-function \
-    --function-name nodejs-app \
-    --zip-file fileb://nodejs-app.zip \
-    --handler index.handler \
-    --runtime nodejs22.x \
-    --role arn:aws:iam::<your-account-id>:role/<lambda-role>
+        - aws lambda create-function \
+            --function-name nodejs-app \
+            --zip-file fileb://nodejs-app.zip \
+            --handler index.handler \
+            --runtime nodejs22.x \
+            --role arn:aws:iam::<your-account-id>:role/<lambda-role>
 
 4. Set a trigger using API Gateway from the Lambda function settings page:
 
