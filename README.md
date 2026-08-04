@@ -55,8 +55,9 @@ Create a Lambda function:
 2. Create the Lambda function:
 
     - Manually via the AWS Lambda console:
-        - Runtime: Node.js 22.x
-        - Handler: index.handler.
+        - name: nodejs_app
+        - Runtime: Node.js 24.x
+        - Handler: index.handler (this is the default)
         - Execution Role: Create a role or select one with basic Lambda permissions.
         - Upload nodejs-app.zip in the console.
 
@@ -71,12 +72,14 @@ Create a Lambda function:
 
 4. Set a trigger using API Gateway from the Lambda function settings page:
 
-    Add an HTTP API Gateway.
+    Select "Add trigger" from the Lambda console.
 
-    Use default settings (public access).
+    Select "API Gateway" as source and "Create new API", then "HTTP API".
+
+    The pubic endpoint URL will be displayed in the "Triggers" section.
 
     This will provide a public URL, for example:
-    https://j9niey8xh4.execute-api.us-east-1.amazonaws.com/nodejs_app/index
+    https://r6mtzo95ji.execute-api.us-east-1.amazonaws.com/default/nodejs_app
 
 5. Test it in a browser:
     ```
