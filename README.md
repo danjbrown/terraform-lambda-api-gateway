@@ -1,6 +1,6 @@
 # Node.js application deployed using Terraform, S3, Lambda, and API Gateway
 
-Deploys a basic Node.js application using Terraform, S3, Lambda, and API Gateway.
+Deploys a basic Node.js API using Terraform, S3, Lambda, and API Gateway.
 
 For more complex applications, for example using Express, it is likely more suitable to create a Lambda function using a container image, which could be stored in ECR.
 
@@ -13,7 +13,7 @@ Authenticate to AWS:
 aws configure
 ```
 
-Terraform is used to create the S3 bucket, Lambda function, API gateway, and CloudWatch logs. A ZIP of the Node.js application code is created and uploaded to the S3 bucket, from where it is synchronised with the Lambda function.
+Terraform is used to create the S3 bucket, Lambda function, API gateway, and CloudWatch logs. A ZIP of the Node.js API code is created and uploaded to the S3 bucket, from where it is synchronised with the Lambda function.
 
 Run the following Terraform commands:
 ```
@@ -41,7 +41,7 @@ terraform apply
 
 ## Manual set-up and deployment
 
-The set-up could be done manually, excluding the S3 storage by uploading the application ZIP directly to the Lambda function.
+Create the infrastructure using the AWS management console or CLI and upload the Node.JS API ZIP directly to the Lambda function. This avoids the need for an S3 bucket.
 
 ZIP the code:
 ```
@@ -61,16 +61,25 @@ Create a Lambda function:
         - Execution Role: Create a role or select one with basic Lambda permissions.
         - Upload nodejs-app.zip in the console.
 
-    - Using the AWS CLI:
+    - By default, Lambda creates an execution role with minimal permissions when you create a function in the Lambda console.
+    If using the CLI, you will need to create the execution role first:
+        ```
+        aws iam create-role \
+            --role-name lambda-ex \
+            --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
+        ```
 
-        - aws lambda create-function \
+    - Using the AWS CLI:
+        ```
+        aws lambda create-function \
             --function-name nodejs-app \
             --zip-file fileb://nodejs-app.zip \
             --handler index.handler \
             --runtime nodejs22.x \
             --role arn:aws:iam::<your-account-id>:role/<lambda-role>
+        ```
 
-4. Set a trigger using API Gateway from the Lambda function settings page:
+4. Create a trigger using API Gateway from the Lambda function settings page:
 
     Select "Add trigger" from the Lambda console.
 
@@ -86,7 +95,7 @@ Create a Lambda function:
     https://your-api-url.amazonaws.com/default/nodejs-app/index
     ```
 
-6. Remember to manually destroy the above AWS services to avoid unncessary charges!
+6. Remember to manually destroy the above AWS services to avoid unncessary charges.
 
 ## Sources
 
