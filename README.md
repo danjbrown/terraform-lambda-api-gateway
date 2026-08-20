@@ -76,7 +76,7 @@ Create a Lambda function:
             --zip-file fileb://nodejs-app.zip \
             --handler index.handler \
             --runtime nodejs22.x \
-            --role arn:aws:iam::<your-account-id>:role/<lambda-role>
+            --role <role_created_above>
         ```
 
 4. Create a trigger using API Gateway from the Lambda function settings page:
